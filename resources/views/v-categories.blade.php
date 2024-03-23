@@ -7,19 +7,22 @@
     <h1>Post Category</h1>
 </div>
 
-@foreach ($categories as $category)
 <div class="container">
-        <ul>
-            <li>
-                <h2><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a></h2>
-            </li>
-        </ul>
+    <div class="row">
 
-</div>
-
-@endforeach
-<div class="container">
-    <h5><a href="/blogs">Back</a></h5>
+        @foreach ($categories as $category )
+        <div class="col-md-4">
+            <a href="/categories/{{ $category->slug }}">
+            <div class="card bg-dark text-white">
+                <img src="https://source.unsplash.com/500x400?{{ $category->name }}" class="card-img" alt="{{ $category->name }}"">
+                    <div class="card-img-overlay d-flex justify-content-center">
+                        <h5 class="card-title align-self-center">{{ $category->name }}</h5>
+                    </div>
+            </div>
+            </a>
+        </div>
+        @endforeach
+    </div>
 </div>
 @endsection
 

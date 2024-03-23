@@ -11,14 +11,17 @@ class PostController extends Controller
     {
 
         return view('v-blog', [
-            "title" => "Posts",
-            "posts" => Post::all()
+            "title" => "All Post",
+            "active" => 'posts',
+            // "posts" => Post::all()
+            "posts" => Post::latest()->filter(request(['search', 'category']))->get()
         ]);
     }
 
     public function show(Post $post){
         return view('post', [
             "title" => "Single Post",
+            "active" => 'posts',
             "post" => $post
         ]);
     }
